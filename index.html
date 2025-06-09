@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Lah ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    button {
+      padding: 20px 50px;
+      font-size: 24px;
+      border: none;
+      border-radius: 12px;
+      background-color: #ff4081;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    button:hover {
+      background-color: #e91e63;
+    }
+
+    #mensagem, #coraçao {
+      margin-top: 30px;
+      padding: 30px;
+      max-width: 600px;
+      text-align: center;
+      font-size: 22px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: none;
+      animation: fadeIn 1s forwards;
+      z-index: 2;
+    }
+
+    #coraçao {
+      font-size: 50px;
+      background: none;
+      box-shadow: none;
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.3); }
+    }
+
+    /* corações caindo */
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hearts span {
+      position: absolute;
+      display: block;
+      color: #ff3366;
+      font-size: 24px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) translateX(20px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts" id="hearts"></div>
+
+  <button onclick="mostrarMensagem()">Clique aqui</button>
+  
+  <div id="coraçao">❤️</div>
+
+  <div id="mensagem">
+    Sei que eu não sou muito bom pra me expressar através da escrita, mas eu dei o meu melhor. 😊🫶<br><br>
+
+    Eu sei que, de certa forma, a gente não é oficialmente namorado e, por isso, em muitos momentos não podemos ser 100% livres. Na maioria das vezes, acabamos nos preocupando com outras pessoas. Mas, mesmo assim, a gente tenta. E pra mim, só isso já é muito importante.<br><br>
+
+    Sei também que, às vezes, você pode não entender o motivo de eu estar sempre tão grudado em você. Mas é o meu jeito de mostrar que gosto de você. Sei que, em alguns momentos, isso pode até ser meio chato… Mas eu prometo tentar melhorar em muitas coisas.<br><br>
+
+    Te amo, Lah. ❤️<br>
+    <strong>Ass: Gui</strong>
+  </div>
+
+  <script>
+    function mostrarMensagem() {
+      document.getElementById('mensagem').style.display = 'block';
+      document.getElementById('coraçao').style.display = 'block';
+    }
+
+    // gerar coraçõezinhos
+    const heartsContainer = document.getElementById('hearts');
+
+    function createHeart() {
+      const heart = document.createElement('span');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (2 + Math.random() * 3) + 's';
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
